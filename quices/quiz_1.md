@@ -37,7 +37,7 @@ Este Space me permitió cargar una imagen para que el modelo de inteligencia art
 
 | **Propiedad**    | **Clasificación**           | **Justificación**                                                                                                                                                                                                |
 | ---------------- | --------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Observable**   | **Parcial** | El agente únicamente puede analizar la información presente en la imagen proporcionada. No conoce el contexto completo ni información externa que no aparezca en ella.  |
+| **Observable**   | **Total** | El agente únicamente puede analizar la información presente en la imagen proporcionada. No conoce el contexto completo ni información externa que no aparezca en ella.  |
 | **Determinista** | **Sí**                      | Si se utiliza la misma imagen y el mismo presupuesto de tokens visuales, el sistema genera el mismo análisis y representación de la imagen, ya que sigue el mismo proceso de procesamiento.                      |
 | **Episódico**    | **Sí**                      | Cada imagen se procesa de forma independiente. El análisis realizado sobre una imagen no influye en el procesamiento de las siguientes imágenes.                                                                 |
 | **Estático**     | **Sí**                      | Durante el procesamiento, la imagen permanece fija y no cambia, por lo que el entorno no se modifica mientras el agente realiza el análisis.                                                                     |
@@ -49,9 +49,9 @@ Este Space me permitió cargar una imagen para que el modelo de inteligencia art
 
 ## 5. ¿Qué tipo de programa de agente creen que es?
 
-### **Respuesta: Agente con aprendizaje**
+### **Respuesta: Agente de reflejo simple**
 
-Ya que utiliza el modelo de inteligencia artificial Gemma 4, el cual fue entrenado previamente con grandes cantidades de datos visuales. Gracias a este entrenamiento, el agente puede analizar imágenes y representar su contenido de manera eficiente sin necesidad de que un programador defina reglas específicas para cada caso. Además, permite modificar el nivel de tokens visuales para mostrar cómo cambia el nivel de detalle del análisis, aprovechando el conocimiento adquirido durante el entrenamiento del modelo.
+En mi opinión, este Space se puede considerar un **agente de reflejo simple** porque responde de inmediato a lo que el usuario hace. Cuando se carga una imagen y se selecciona un nivel de tokens visuales, el sistema la procesa y muestra el resultado correspondiente. No tiene en cuenta imágenes anteriores ni recuerda lo que se hizo antes; simplemente analiza la imagen que recibe en ese momento y genera el resultado. Por eso considero que actúa como un agente de reflejo simple.
 
 <img width="541" height="584" alt="image" src="https://github.com/user-attachments/assets/adcc1e31-0481-4d80-abc1-5673f85d284b" />
 

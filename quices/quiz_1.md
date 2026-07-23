@@ -10,7 +10,7 @@
 
 ## 2. ¿Qué hace el agente?
 
-Este Space me permitió cargar una imagen para que el modelo de inteligencia artificial Gemma 4 la analizara utilizando diferentes presupuestos de tokens visuales. Su objetivo es mostrar las dimensiones de la imagen y cómo la cantidad de tokens asignados influye en el nivel de detalle con el que el modelo representa y procesa la imagen. Un nivel bajo permite un procesamiento más rápido, mientras que uno más alto conserva mayor información visual, facilitando la identificación de pequeños detalles y mejorando la calidad del análisis.
+Este Space me permitió cargar una imagen para que el modelo de inteligencia artificial Gemma 4 la analizara utilizando diferentes niveles de tokens visuales. Su objetivo es mostrar las dimensiones de la imagen y cómo la cantidad de tokens asignados influye en el nivel de detalle con el que el modelo representa y procesa la imagen. Un uso de tokens bajo permite un procesamiento más rápido, mientras que uno más alto conserva mayor información visual, facilitando la identificación de pequeños detalles y mejorando la calidad del análisis.
 
 <img width="630" height="654" alt="image" src="https://github.com/user-attachments/assets/98a40c6c-81bd-44fa-b4d7-2a7c9f84ab26" />
 

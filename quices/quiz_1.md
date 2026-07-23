@@ -59,6 +59,31 @@ En mi opinión, este Space se puede considerar un **agente de reflejo simple** p
 
 # Reto adicional
 
+## 1. Totalmente observable, determinista y episódico
+
+[**Space seleccionado:** **Unlimited OCR**](https://huggingface.co/spaces/baidu/Unlimited-OCR)
+
+
+### Justificación
+
+Escogí Unlimited OCR porque el sistema puede ver toda la información del documento que el usuario carga, por lo que es totalmente observable. También es determinista, ya que si se utiliza el mismo documento el resultado será siempre el mismo. Además, es episódico porque cada documento se procesa por separado y una ejecución no influye en la siguiente.
+
+---
+
+## 2. Parcialmente observable, estocástico y secuencial
+
+[**Space seleccionado:** **Gemma Avatar**](https://huggingface.co/spaces/victor/gemma-avatar)
+
+
+### Justificación
+
+Escogí Gemma Avatar porque solo conoce la información que el usuario le proporciona durante la conversación, por lo que es parcialmente observable. Es estocástico porque las respuestas pueden variar y no siempre serán exactamente iguales. Además, es secuencial porque cada mensaje influye en el desarrollo de la conversación y en las respuestas posteriores.
+
+
+-----------------------------------------------
+## Ejemplos elaborados por mí
+-----------------------------------------------
+
 ## 1. Encuentre un Space que sea totalmente observable, determinista y episódico
 
 **Ejemplo:** Un Space que convierte texto a mayúsculas.

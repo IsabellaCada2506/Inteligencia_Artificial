@@ -25,7 +25,7 @@ Este Space me permitió cargar una imagen para que el modelo de inteligencia art
 | Elemento        | Respuesta                                                                                                                                   |
 | --------------- | ------------------------------------------------------------------------------------------------------------------------------------------- |
 | **Performance (Medida de desempeño)**| Analizar correctamente la imagen, representar la mayor cantidad de información visual posible según el nivel de tokens seleccionado y mostrar una representación coherente con las dimensiones y el nivel de detalle esperados|
-| **Environment (Entorno)**  | Imágenes cargadas por el usuario y la interfaz de la sdimensiones y tokens.                                                                               |
+| **Environment (Entorno)**  | Imágenes cargadas por el usuario y la interfaz de las dimensiones y tokens.                                                                               |
 |  **Actuators (Actuadores)**   | Procesar la imagen y mostrar cómo se representa con distintos niveles de tokens visuales.                                              |
 |  **Sensors (Sensores)**     | La imagen proporcionada por el usuario y el valor del nivel de tokens seleccionado.                                                   |
 

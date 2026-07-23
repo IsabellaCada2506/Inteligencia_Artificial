@@ -57,26 +57,6 @@ En mi opinión, este Space se puede considerar un **agente de reflejo simple** p
 
 ------------------------------------------------------------------------
 
-# Discusión en clase
-
-### ¿Dos Spaces diferentes pueden compartir el mismo tipo de entorno?
-
-Sí. Aunque dos Spaces realicen tareas diferentes, pueden operar en un entorno con características similares. Por ejemplo, varios Spaces que procesan imágenes trabajan en un entorno parcialmente observable, estático y episódico, ya que analizan cada imagen de forma independiente utilizando únicamente la información disponible en ella.
-
----
-
-### ¿Es posible saber con certeza qué tipo de agente implementa un Space únicamente observándolo?
-
-No. Al interactuar con un Space solo es posible observar su comportamiento externo, es decir, las entradas que recibe y las salidas que produce. Sin acceder al código fuente o a la documentación técnica, no se puede conocer con certeza cómo está implementado internamente el agente ni qué algoritmos utiliza.
-
----
-
-### ¿Qué diferencia existe entre el comportamiento observable de un agente y su implementación interna?
-
-El comportamiento observable corresponde a las acciones que el usuario puede ver, como cargar una imagen y obtener el resultado del análisis. En cambio, la implementación interna incluye todos los procesos que ocurren dentro del sistema, como el modelo de inteligencia artificial, los algoritmos de procesamiento, la representación mediante tokens visuales y los cálculos necesarios para generar el resultado. Estos procesos no son visibles para el usuario, pero son los que hacen posible el funcionamiento del agente.
-
-------------------------------------------------------------------------
-
 # Reto adicional
 
 ## 1. Encuentre un Space que sea totalmente observable, determinista y episódico

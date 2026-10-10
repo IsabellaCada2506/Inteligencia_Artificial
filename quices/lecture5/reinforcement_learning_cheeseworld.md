@@ -913,7 +913,7 @@ La tabla actual desde S0 es:
 | Abajo | 1.10 |
 | Izquierda | 0.00 |
 
-Se utiliza epsilon = 0.1.
+Se utiliza **epsilon = 0.1**.
 
 ### a. Si el agente explota, ¿qué acción selecciona?
 
@@ -928,7 +928,7 @@ $$
 **Respuesta:** la probabilidad de explorar es **0.1**, equivalente al **10 %**.
 
 $$
-P(\text{explorar})=\epsilon=0.1=10\%
+P(\text{explorar})=\epsilon=0.1
 $$
 
 ### c. ¿Cuál es la probabilidad de explotar?
@@ -936,12 +936,12 @@ $$
 **Respuesta:** la probabilidad de explotar es **0.9**, equivalente al **90 %**.
 
 $$
-P(\text{explotar})=1-\epsilon=1-0.1=0.9=90\%
+P(\text{explotar})=1-\epsilon=1-0.1=0.9
 $$
 
-**Interpretación:**
+### Interpretación
 
-El agente selecciona una acción aleatoria con probabilidad del 10 % y selecciona la acción de mayor valor Q con probabilidad del 90 %. Al explorar, también puede seleccionar Derecha por azar.
+El agente selecciona una acción aleatoria con probabilidad del **10 %** y elige la acción con mayor valor Q, **Derecha**, con probabilidad del **90 %**. Al explorar, también puede seleccionar Derecha por azar; por eso, explorar no significa necesariamente elegir una acción diferente de la mejor.
 
 ---
 

@@ -750,3 +750,300 @@ $$
 ![Ejercicio](figs/Ejercicio.png)
 
 
+# Solución — Ejercicios de Q-Learning en CheeseWorld
+
+La actualización de Q-Learning es:
+
+$$
+Q(s,a)\leftarrow Q(s,a)+\alpha
+\left[r+\gamma\max_{a'}Q(s',a')-Q(s,a)\right]
+$$
+
+Para resolverla calculamos:
+
+$$
+y=r+\gamma\max_{a'}Q(s',a')
+$$
+
+$$
+\delta=y-Q(s,a)
+$$
+
+$$
+Q_{\text{nuevo}}(s,a)=Q(s,a)+\alpha\delta
+$$
+
+---
+
+## Ejercicio 1 — Una actualización de Q-Learning
+
+El agente está en S0, ejecuta Derecha y llega a S1 con una recompensa de +1.
+
+Datos:
+
+- Recompensa: r = 1.
+- Tasa de aprendizaje: α = 0.5.
+- Factor de descuento: γ = 0.9.
+
+### 1. ¿Cuál es Q(S0, Derecha) antes de actualizar?
+
+Según la tabla:
+
+$$
+Q(S_0,\text{Derecha})=\boxed{2.00}
+$$
+
+### 2. ¿Cuál es el máximo valor Q desde S1?
+
+Los valores desde S1 son:
+
+| Acción | Valor Q |
+|---|---:|
+| Arriba | 1.00 |
+| Derecha | 4.00 |
+| Abajo | −2.00 |
+| Izquierda | 0.50 |
+
+Por tanto:
+
+$$
+\max_{a'}Q(S_1,a')=\max(1,4,-2,0.5)=\boxed{4.00}
+$$
+
+### 3. Calcule el TD target
+
+$$
+y=r+\gamma\max_{a'}Q(S_1,a')
+$$
+
+$$
+y=1+0.9(4)=1+3.6=\boxed{4.60}
+$$
+
+### 4. Calcule el TD error
+
+$$
+\delta=y-Q(S_0,\text{Derecha})
+$$
+
+$$
+\delta=4.6-2=\boxed{2.60}
+$$
+
+### 5. Actualice Q(S0, Derecha)
+
+$$
+Q_{\text{nuevo}}(S_0,\text{Derecha})
+=2+0.5(2.6)
+$$
+
+$$
+Q_{\text{nuevo}}(S_0,\text{Derecha})
+=2+1.3=\boxed{3.30}
+$$
+
+**Interpretación:** el valor aumenta de 2.00 a 3.30 porque la recompensa recibida y la estimación del futuro producen un objetivo mayor que el valor anterior.
+
+---
+
+## Ejercicio 2 — Recompensa negativa en un estado terminal
+
+El agente está en S1, ejecuta Abajo y llega al veneno en S4. Recibe −10 y termina el episodio.
+
+Datos:
+
+- Q(S1, Abajo) antes de actualizar: 1.
+- Recompensa: r = −10.
+- α = 0.5.
+- γ = 0.9.
+- S4 es terminal.
+
+### 1. ¿Cuál es el máximo valor Q desde S4?
+
+Como S4 es terminal, no hay acciones ni recompensas futuras:
+
+$$
+\max_{a'}Q(S_4,a')=\boxed{0.00}
+$$
+
+### 2. Calcule el TD target
+
+$$
+y=r+\gamma\max_{a'}Q(S_4,a')
+$$
+
+$$
+y=-10+0.9(0)=\boxed{-10.00}
+$$
+
+### 3. Calcule el TD error
+
+$$
+\delta=y-Q(S_1,\text{Abajo})
+$$
+
+$$
+\delta=-10-1=\boxed{-11.00}
+$$
+
+### 4. Actualice Q(S1, Abajo)
+
+$$
+Q_{\text{nuevo}}(S_1,\text{Abajo})
+=1+0.5(-11)
+$$
+
+$$
+Q_{\text{nuevo}}(S_1,\text{Abajo})
+=1-5.5=\boxed{-4.50}
+$$
+
+**Interpretación:** el valor disminuye de 1.00 a −4.50 porque la acción lleva al veneno. Esta experiencia hace que el agente estime esa acción como menos conveniente.
+
+---
+
+## Ejercicio 3 — Política epsilon-greedy
+
+La tabla actual desde S0 es:
+
+| Acción | Valor Q |
+|---|---:|
+| Arriba | 0.20 |
+| Derecha | 3.30 |
+| Abajo | 1.10 |
+| Izquierda | 0.00 |
+
+Se utiliza epsilon = 0.1.
+
+### a. Si el agente explota, ¿qué acción selecciona?
+
+**Respuesta:** selecciona **Derecha**, porque tiene el mayor valor Q de la tabla: **3.30**.
+
+$$
+\max(0.20,3.30,1.10,0.00)=3.30
+$$
+
+### b. ¿Cuál es la probabilidad de explorar?
+
+**Respuesta:** la probabilidad de explorar es **0.1**, equivalente al **10 %**.
+
+$$
+P(\text{explorar})=\epsilon=0.1=10\%
+$$
+
+### c. ¿Cuál es la probabilidad de explotar?
+
+**Respuesta:** la probabilidad de explotar es **0.9**, equivalente al **90 %**.
+
+$$
+P(\text{explotar})=1-\epsilon=1-0.1=0.9=90\%
+$$
+
+**Interpretación:**
+
+El agente selecciona una acción aleatoria con probabilidad del 10 % y selecciona la acción de mayor valor Q con probabilidad del 90 %. Al explorar, también puede seleccionar Derecha por azar.
+
+---
+
+## Ejercicio 4 — Dos pasos consecutivos
+
+El agente realiza estas transiciones:
+
+1. S0 → S1 mediante Derecha, con recompensa +1.
+2. S1 → S2 mediante Derecha, con recompensa 0.
+
+Todos los valores Q comienzan en cero.
+
+Se utiliza:
+
+$$
+\alpha=0.5,\qquad \gamma=0.9
+$$
+
+### 1. Primera actualización: S0 → S1
+
+Antes de actualizar:
+
+$$
+Q(S_0,\text{Derecha})=0
+$$
+
+Como todos los valores desde S1 son cero:
+
+$$
+\max_{a'}Q(S_1,a')=0
+$$
+
+El TD target es:
+
+$$
+y_1=1+0.9(0)=1
+$$
+
+El TD error es:
+
+$$
+\delta_1=1-0=1
+$$
+
+Actualizamos:
+
+$$
+Q_{\text{nuevo}}(S_0,\text{Derecha})
+=0+0.5(1)=\boxed{0.50}
+$$
+
+### 2. Segunda actualización: S1 → S2
+
+La primera actualización solo cambió Q(S0, Derecha). Los valores desde S1 y S2 siguen en cero.
+
+Por tanto:
+
+$$
+Q(S_1,\text{Derecha})=0
+$$
+
+$$
+\max_{a'}Q(S_2,a')=0
+$$
+
+Como la recompensa de esta transición es cero:
+
+$$
+y_2=0+0.9(0)=0
+$$
+
+$$
+\delta_2=0-0=0
+$$
+
+Actualizamos:
+
+$$
+Q_{\text{nuevo}}(S_1,\text{Derecha})
+=0+0.5(0)=\boxed{0.00}
+$$
+
+**Interpretación:** la primera transición aumenta Q(S0, Derecha) a 0.50. La segunda deja Q(S1, Derecha) en 0.00 porque tanto la recompensa inmediata como los valores estimados desde S2 son cero. El valor actualizado de S0 no se utiliza en esta segunda actualización, ya que el siguiente estado es S2.
+
+---
+
+## Resumen de respuestas
+
+| Ejercicio | Punto | Respuesta |
+|---|---|---|
+| 1 | 1. Q antes de actualizar | 2.00 |
+| 1 | 2. Máximo Q desde S1 | 4.00 |
+| 1 | 3. TD target | 4.60 |
+| 1 | 4. TD error | 2.60 |
+| 1 | 5. Nuevo Q(S0, Derecha) | 3.30 |
+| 2 | 1. Máximo Q desde S4 | 0.00 |
+| 2 | 2. TD target | −10.00 |
+| 2 | 3. TD error | −11.00 |
+| 2 | 4. Nuevo Q(S1, Abajo) | −4.50 |
+| 3 | a. Acción al explotar | Derecha |
+| 3 | b. Probabilidad de explorar | 10 % |
+| 3 | c. Probabilidad de explotar | 90 % |
+| 4 | 1. Nuevo Q(S0, Derecha) | 0.50 |
+| 4 | 2. Nuevo Q(S1, Derecha) | 0.00 |
+
